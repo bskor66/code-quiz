@@ -1,0 +1,4 @@
+#question-section {
+	display: none;
+	flex-flow: column wrap;
+}
