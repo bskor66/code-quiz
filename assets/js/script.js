@@ -30,10 +30,17 @@ const questions = [
 	},
 ];
 
+//Display question
+function displayQuestion(question) {
+	questionHeader.innerText = question.question;
+}
+
 //Begin Game
 function beginGame() {
 	startGameSection.style.display = "none";
 	questionSection.style.display = "flex";
+
+	displayQuestion(questions[0]);
 }
 
 //Start Game Button on Click
