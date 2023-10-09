@@ -5,7 +5,7 @@ let startGameSection = document.getElementById("start-game-section");
 //Question Screen Elements
 let questionSection = document.getElementById("question-section");
 let questionHeader = questionSection.querySelector("h2");
-let optionsOL = questionSection.querySelector("ol");
+let choicesOL = questionSection.querySelector("ol");
 
 //Questions
 const questionTemplate = {
@@ -33,6 +33,14 @@ const questions = [
 //Display question
 function displayQuestion(question) {
 	questionHeader.innerText = question.question;
+
+	question.choices.forEach((element) => {
+		let choiceLi = document.createElement("li");
+		let choiceButton = document.createElement("button");
+		choiceButton.innerText = element;
+		choiceLi.appendChild(choiceButton);
+		choicesOL.appendChild(choiceLi);
+	});
 }
 
 //Begin Game
