@@ -28,16 +28,46 @@ const questions = [
 		choices: ["Mars", "Venus", "Jupiter", "Earth"],
 		correctAnswer: "Mars",
 	},
+	{
+		...questionTemplate,
+		question: "Which planet is known as the Red Planet?",
+		choices: ["Mars", "Venus", "Jupiter", "Earth"],
+		correctAnswer: "Mars",
+	},
 ];
+
+var score = 0;
+var questionI = 0;
+
+function clearQuestion() {
+	questionHeader.innerHTML = "";
+	choicesOL.innerHTML = "";
+}
+
+function endGame() {
+	console.log("end");
+}
 
 //Display question
 function displayQuestion(question) {
 	questionHeader.innerText = question.question;
-
 	question.choices.forEach((element) => {
 		let choiceLi = document.createElement("li");
 		let choiceButton = document.createElement("button");
 		choiceButton.innerText = element;
+		choiceButton.addEventListener("click", () => {
+			if (question.correctAnswer === element) {
+				score++;
+			}
+			console.log(score);
+			questionI++;
+			clearQuestion();
+			if (questionI >= questions.length) {
+				endGame();
+			} else {
+				displayQuestion(questions[questionI]);
+			}
+		});
 		choiceLi.appendChild(choiceButton);
 		choicesOL.appendChild(choiceLi);
 	});
@@ -47,8 +77,7 @@ function displayQuestion(question) {
 function beginGame() {
 	startGameSection.style.display = "none";
 	questionSection.style.display = "flex";
-
-	displayQuestion(questions[0]);
+	displayQuestion(questions[questionI]);
 }
 
 //Start Game Button on Click
