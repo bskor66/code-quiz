@@ -163,10 +163,15 @@ function enterInitials(event) {
 function displayScores() {
 	highScoresSection.style.display = "flex";
 	let scoreBoard = JSON.parse(localStorage.getItem("scores"));
+	scoreBoard = Object.entries(scoreBoard).map(([name, score]) => ({
+		name,
+		score,
+	}));
+	scoreBoard.sort((a, b) => b.score - a.score);
 	highScoresList.innerHTML = "";
-	Object.keys(scoreBoard).forEach((name) => {
+	scoreBoard.forEach((scoreObj) => {
 		let scoreLi = document.createElement("li");
-		scoreLi.textContent = `${name} - ${scoreBoard[name]}`;
+		scoreLi.textContent = `${scoreObj.name} - ${scoreObj.score}`;
 		highScoresList.appendChild(scoreLi);
 	});
 }
