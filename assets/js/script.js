@@ -6,8 +6,14 @@ let startGameSection = document.getElementById("start-game-section");
 let questionSection = document.getElementById("question-section");
 let questionHeader = questionSection.querySelector("h2");
 let choicesOL = questionSection.querySelector("ol");
+let answerResult = questionSection.querySelector("h4");
 
 //End Game Elements
+let endGameSection = document.getElementById("end-game-section");
+let endGameScore = document.getElementById("final-score");
+
+//Header Elements
+let timeCounter = document.getElementById("timer");
 
 //Questions
 const questionTemplate = {
@@ -38,17 +44,12 @@ const questions = [
 	},
 ];
 
-var score = 0;
+var timeLeft = 60;
 var questionI = 0;
 
 function clearQuestion() {
 	questionHeader.innerHTML = "";
 	choicesOL.innerHTML = "";
-}
-
-function endGame() {
-	questionSection.style.display = "none";
-	console.log("end");
 }
 
 //Display question
@@ -60,9 +61,12 @@ function displayQuestion(question) {
 		choiceButton.innerText = element;
 		choiceButton.addEventListener("click", () => {
 			if (question.correctAnswer === element) {
-				score++;
+				answerResult.textContent = "Correct!";
+			} else {
+				answerResult.textContent = "Wrong!";
+				timeLeft -= 10;
+				setTimeCounter(timeLeft);
 			}
-			console.log(score);
 			questionI++;
 			clearQuestion();
 			if (questionI >= questions.length) {
@@ -76,12 +80,38 @@ function displayQuestion(question) {
 	});
 }
 
+function setTimeCounter(num) {
+	timeCounter.textContent = `Time Left: ${num}`;
+}
+
 //Begin Game
 function beginGame() {
 	startGameSection.style.display = "none";
 	questionSection.style.display = "flex";
+
+	window.timer = setInterval(() => {
+		timeLeft--;
+		setTimeCounter(timeLeft);
+		if (timeLeft <= 0) {
+			endGame();
+		}
+	}, 1000);
+
 	displayQuestion(questions[questionI]);
 }
 
-//Start Game Button on Click
-startGameButton.addEventListener("click", beginGame);
+function endGame() {
+	questionSection.style.display = "none";
+	endGameSection.style.display = "flex";
+	endGameScore.textContent = `Your final score is ${timeLeft}`;
+	clearInterval(timer);
+	console.log("end");
+}
+
+//on load
+function init() {
+	startGameButton.addEventListener("click", beginGame);
+	setTimeCounter(timeLeft);
+}
+
+init();

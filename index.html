@@ -13,7 +13,7 @@
 	<body>
 		<header>
 			<h3><a href="">View high scores</a></h3>
-			<h3>Time: 0</h3>
+			<h3 id="timer">Time: 0</h3>
 		</header>
 		<main>
 			<section id="start-game-section">
@@ -28,13 +28,17 @@
 			<section id="question-section">
 				<h2></h2>
 				<ol></ol>
+				<hr />
+				<h4></h4>
 			</section>
 			<section id="end-game-section">
 				<h2>Game Over!</h2>
-				<p>Your final score is 0</p>
-				<label for="initials">Enter initials:</label>
-				<input type="text" id="initials" />
-				<button>Submit</button>
+				<p id="final-score"></p>
+				<form>
+					<label for="initials">Enter initials:</label>
+					<input type="text" id="initials" />
+					<button>Submit</button>
+				</form>
 			</section>
 		</main>
 		<script src="./assets/js/script.js"></script>

@@ -3,6 +3,7 @@
 	--text: black;
 	--primary: coral;
 	--primary-hover: lightcoral;
+	--placeholder: grey;
 	--radius: 10px;
 }
 
@@ -32,7 +33,12 @@ h2 {
 	font-size: 48px;
 }
 
-p {
+h4 {
+	color: var(--placeholder);
+}
+
+p,
+label {
 	font-size: 20px;
 }
 
@@ -43,6 +49,12 @@ a {
 
 a:hover {
 	color: var(--primary-hover);
+}
+
+hr {
+	background-color: var(--placeholder);
+	height: 2px;
+	width: 100%;
 }
 
 header {
@@ -106,4 +118,18 @@ button:hover {
 
 #end-game-section {
 	display: none;
+	flex-flow: column wrap;
+	text-align: left;
+	gap: 20px;
+}
+
+form {
+	display: flex;
+	gap: 20px;
+	height: 48px;
+	align-items: center;
+}
+
+input {
+	padding: 10px;
 }
