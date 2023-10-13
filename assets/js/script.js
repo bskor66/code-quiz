@@ -145,7 +145,6 @@ function endGame() {
 	endGameSection.style.display = "flex";
 	endGameScore.textContent = `Your final score is ${timeLeft}.`;
 	clearInterval(timer);
-	console.log("end");
 }
 
 function enterInitials(event) {
@@ -161,6 +160,7 @@ function enterInitials(event) {
 }
 
 function displayScores() {
+	highScoresList.innerHTML = "";
 	highScoresSection.style.display = "flex";
 	let scoreBoard = JSON.parse(localStorage.getItem("scores"));
 	scoreBoard = Object.entries(scoreBoard).map(([name, score]) => ({
@@ -168,7 +168,6 @@ function displayScores() {
 		score,
 	}));
 	scoreBoard.sort((a, b) => b.score - a.score);
-	highScoresList.innerHTML = "";
 	scoreBoard.forEach((scoreObj) => {
 		let scoreLi = document.createElement("li");
 		scoreLi.textContent = `${scoreObj.name} - ${scoreObj.score}`;
