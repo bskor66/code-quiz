@@ -5,22 +5,38 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Coding Quiz</title>
 		<link rel="stylesheet" href="./assets/css/normalize.css" />
+		<link
+			href="https://fonts.googleapis.com/css?family=Gabarito:regular,500,600,700,800,900"
+			rel="stylesheet" />
 		<link rel="stylesheet" href="./assets/css/style.css" />
 	</head>
 	<body>
-		<section id="start-game-section">
-			<h1>Coding Quiz Challenge</h1>
-			<p>
-				Try to answer the following code-related questions within the time
-				limit. Keep in mind that incorrect answers will penalize your score/time
-				by ten seconds!
-			</p>
-			<button id="start-game-button">Start Quiz</button>
-		</section>
-		<section id="question-section">
-			<h2></h2>
-			<ol></ol>
-		</section>
+		<header>
+			<h3><a href="">View high scores</a></h3>
+			<h3>Time: 0</h3>
+		</header>
+		<main>
+			<section id="start-game-section">
+				<h1>Coding Quiz Challenge</h1>
+				<p>
+					Try to answer the following code-related questions within the time
+					limit. Keep in mind that incorrect answers will penalize your
+					score/time by ten seconds!
+				</p>
+				<button id="start-game-button">Start Quiz</button>
+			</section>
+			<section id="question-section">
+				<h2></h2>
+				<ol></ol>
+			</section>
+			<section id="end-game-section">
+				<h2>Game Over!</h2>
+				<p>Your final score is 0</p>
+				<label for="initials">Enter initials:</label>
+				<input type="text" id="initials" />
+				<button>Submit</button>
+			</section>
+		</main>
 		<script src="./assets/js/script.js"></script>
 	</body>
 </html>

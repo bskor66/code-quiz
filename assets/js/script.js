@@ -7,6 +7,8 @@ let questionSection = document.getElementById("question-section");
 let questionHeader = questionSection.querySelector("h2");
 let choicesOL = questionSection.querySelector("ol");
 
+//End Game Elements
+
 //Questions
 const questionTemplate = {
 	question: "",
@@ -45,6 +47,7 @@ function clearQuestion() {
 }
 
 function endGame() {
+	questionSection.style.display = "none";
 	console.log("end");
 }
 
